@@ -1,5 +1,5 @@
 import passwordGenerator from 'password-generator';
-import Mail from '../lib/Mail';
+import Queue from '../lib/Queue';
 
 export default {
     async StorageEvent(req, res) {
@@ -9,14 +9,9 @@ export default {
             name,
             email, 
             password: passwordGenerator(15, false)
-        };
+        };        
 
-        await Mail.sendMail({
-            from: 'ROGER <rogerlog@id.uff.br>',
-            to: `${name} <${email}>`,
-            subject: 'Cadastro de Usuário',
-            html: `Olá, ${name}, bem-vindo!`
-        })
+        await Queue.add('RegistrationMail', { user });
 
         return res.json(user);
     }
