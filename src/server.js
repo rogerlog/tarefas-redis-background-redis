@@ -15,5 +15,5 @@ app.post('/users', UserController.StorageEvent);
 app.use('/admin/queues', BullBoard.UI);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server running on the ${process.env.PORT}`)
+    console.log(`Server running on the ${process.env.PORT}`);
 });

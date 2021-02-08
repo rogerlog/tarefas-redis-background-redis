@@ -14,6 +14,6 @@ export default {
             to: `${user.name} <${email}>`,
             subject: 'Cadastro de Usuário',
             html: `Olá, ${user.name}, bem-vindo!`
-        })
-    }
-}
+        });
+    },
+};
